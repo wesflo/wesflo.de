@@ -12,8 +12,12 @@ export default function (env) {
     let webPackConf = {
         mode: devMode ? 'development' : 'production',
         entry: [
-            path.resolve(__dirname, `${config.srcPath}/js/App.jsx`),
-            path.resolve(__dirname, `${config.srcPath}/scss/app.scss`),
+            'react-hot-loader/patch',
+            'webpack-dev-server/client?http://localhost:8080',
+            'webpack/hot/only-dev-server',
+
+            path.resolve(__dirname, `${config.srcPath}/js/index.jsx`),
+//            path.resolve(__dirname, `${config.srcPath}/scss/app.scss`),
         ],
         module: {
             rules: [

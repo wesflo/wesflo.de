@@ -1,0 +1,24 @@
+import React from "react";
+import ReactDOM from 'react-dom';
+import "../scss/app.scss";
+import { AppContainer } from 'react-hot-loader';
+import App from './containers/App';
+
+const render = () => {
+    ReactDOM.render(
+        <AppContainer>
+            <App />
+        </AppContainer>,
+        document.getElementById('app')
+    );
+};
+
+render();
+
+// Hot Module Replacement API
+if (module.hot) {
+    module.hot.accept('./containers/App', () => {
+        render(App);
+        render(require('./containers/App'))
+    });
+}
