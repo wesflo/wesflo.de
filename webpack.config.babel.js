@@ -6,18 +6,28 @@ import {BundleAnalyzerPlugin} from "webpack-bundle-analyzer";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
 export default function (env) {
+    let devMode = env === 'local';
     let webPackConf = {
-        mode: env === 'local' ? 'development' : 'production',
+        mode: devMode ? 'development' : 'production',
         entry: [
             path.resolve(__dirname, `${config.srcPath}/js/App.jsx`),
+            path.resolve(__dirname, `${config.srcPath}/scss/app.scss`),
         ],
         module: {
             rules: [
                 {
-                    enforce: "pre", //to check source files, not modified by other loaders (like babel-loader)
+                    enforce: 'pre',
                     test: /\.(js|jsx)$/,
                     exclude: /node_modules/,
-                    loader: "eslint-loader"
+                    loader: 'eslint-loader',
+                    options: {
+                        emitWarning: true,
+                        emitError: true,
+                        //failOnWarning: false,
+                        //failOnError: true,
+                        useEslintrc: false,
+                        configFile: './webpack/eslint_conf.js'
+                    }
                 }, {
                     test: /\.(js|jsx)$/,
                     exclude: /node_modules/,
@@ -29,7 +39,12 @@ export default function (env) {
                 },
                 {
                     test: /\.scss$/,
-                    use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
+                    use: [
+                        devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+                        'css-loader',
+                        'postcss-loader',
+                        'sass-loader',
+                    ],
                 }
             ]
         },
@@ -40,6 +55,10 @@ export default function (env) {
         devtool: 'source-map',
         plugins: [
             new webpack.optimize.ModuleConcatenationPlugin(),
+            new MiniCssExtractPlugin({
+                filename: devMode ? '[name].css' : '[name].[hash].css',
+                chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
+            })
         ],
         optimization: {
             splitChunks: {
@@ -68,7 +87,7 @@ export default function (env) {
             filename: '[name].bundle.js',
             chunkFilename: '[chunkhash].bundle.js',
             path: path.resolve(__dirname, `${config.distPath}`),
-            publicPath: `/theme/`,
+            publicPath: `/dist`,
         },
     };
 
@@ -78,12 +97,12 @@ export default function (env) {
         );
     }
 
-    if (config.env === 'prod') {
+    if (!devMode) {
         webPackConf.plugins.push(
             new UglifyJsPlugin(),
             new MiniCssExtractPlugin({
-                filename: "[name].css",
-                chunkFilename: "[id].css"
+                filename: '[name].css',
+                chunkFilename: '[id].css'
             })
         );
     }
