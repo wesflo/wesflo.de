@@ -4,6 +4,8 @@ import webpack from "webpack"
 import path from "path"
 import {BundleAnalyzerPlugin} from "webpack-bundle-analyzer";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import CleanWebpackPlugin from "clean-webpack-plugin";
 
 export default function (env) {
     let devMode = env === 'local';
@@ -15,20 +17,21 @@ export default function (env) {
         ],
         module: {
             rules: [
+//                {
+//                    enforce: 'pre',
+//                    test: /\.(js|jsx)$/,
+//                    exclude: /node_modules/,
+//                    loader: 'eslint-loader',
+//                    options: {
+//                        emitWarning: true,
+//                        emitError: true,
+//                        //failOnWarning: false,
+//                        //failOnError: true,
+//                        useEslintrc: false,
+//                        configFile: './webpack/eslint_conf.js'
+//                    }
+//                },
                 {
-                    enforce: 'pre',
-                    test: /\.(js|jsx)$/,
-                    exclude: /node_modules/,
-                    loader: 'eslint-loader',
-                    options: {
-                        emitWarning: true,
-                        emitError: true,
-                        //failOnWarning: false,
-                        //failOnError: true,
-                        useEslintrc: false,
-                        configFile: './webpack/eslint_conf.js'
-                    }
-                }, {
                     test: /\.(js|jsx)$/,
                     exclude: /node_modules/,
                     loader: 'babel-loader',
@@ -52,9 +55,18 @@ export default function (env) {
             extensions: ['.js', '.jsx'],
             modules: [path.resolve(__dirname, `${config.srcPath}/js`), 'node_modules']
         },
+        devServer: {
+            contentBase: 'public',
+            hot: true,
+        },
         devtool: 'source-map',
         plugins: [
             new webpack.optimize.ModuleConcatenationPlugin(),
+            new CleanWebpackPlugin(['dist']),
+            new HtmlWebpackPlugin({
+                title: 'Hot Module Replacement'
+            }),
+            new webpack.HotModuleReplacementPlugin(),
             new MiniCssExtractPlugin({
                 filename: devMode ? '[name].css' : '[name].[hash].css',
                 chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
