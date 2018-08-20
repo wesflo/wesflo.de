@@ -1,0 +1,16 @@
+@mixin longShadow($color_a, $color_b, $stepnum, $opacity: 1) {
+        text-shadow: longShadow($color_a, $color_b, $stepnum, $opacity);
+}
+
+@mixin textShadow($color, $size: 1px, $blur: 0) {
+    text-shadow: (-$size) (-$size) $blur $color, $size (-$size) $blur $color, -$size $size $blur $color, $size $size $blur $color;
+}
+
+@mixin boxShadow($hover: false, $shadow: $boxShadow) {
+        box-shadow: $shadow;
+    @if $hover {
+        &:hover {
+            box-shadow: $boxShadowHover;
+        }
+    }
+}

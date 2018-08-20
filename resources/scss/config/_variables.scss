@@ -1,0 +1,228 @@
+
+$primary: #44a800 !default;
+$secondary: #449eff !default;
+$inverted: #fff !default;
+//
+$bodyBg: #eee !default;
+$mainAsideBG: #343434 !default;
+$teaserBg: #fff !default;
+$teaserShadow: 0 1px 4px 0 rgba(0, 0, 0, 0.24);
+$approvalBodyBg: #282828;
+
+$greyDefault: #585858;
+$greyLighter: lighten($greyDefault, 40%) !default;
+$greyLight: lighten($greyDefault, 20%) !default;
+$greyDark: darken($greyDefault, 30%) !default;
+
+$errorColor: #cd0000;
+
+$alertOKColor: #279e19;
+$alertOKBg: #e8fdef;
+$alertErrorColor: #d91a1d;
+$alertErrorBg: #ffdddd;
+$alertHintColor: $secondary;
+$alertHintBg: lighten($secondary, 50%);
+$boxShadow: 0 0 10px rgba(0,0,0, .4);
+$boxShadowHover: 0 0 20px rgba(0,0,0, .4);
+
+$tableTheadBg: #ececec;
+$tableTBodyTrBorderColor: #ececec;
+
+//// FONTS
+$fontFamilyDefault: "Robot", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$fontColorDefault: $greyDefault;
+$lineHeightParagraph: 1.4;
+$textBottomSpace: .6rem;
+
+$fontWeightThin: 100 !default;
+$fontWeightLight: 300 !default;
+$fontWeightRegular: 400 !default;
+$fontWeightMedium: 400 !default;
+$fontWeightBold: 500 !default;
+$fontWeightDefault: $fontWeightRegular;
+
+$emFontSize: 16px;
+$fontSizeDefault: .9rem;
+$fontSizeMedium: .8rem;
+$fontSizeSmall: .7rem;
+$fontSizeExtraSmall: .6rem;
+$fontSizeLarge: 1.1rem;
+$fontSizeExtraLarge: 1.3rem;
+
+$fontSizeH1: 2em;
+$fontSizeH2: 1.8em;
+$fontSizeH3: 1.6em;
+$fontSizeH4: 1.4em;
+$fontSizeH5: 1.2em;
+$fontSizeH6: 1em;
+$bottomSpaceH1: 2rem;
+$bottomSpaceH2: 1rem;
+$bottomSpaceH3: 1rem;
+$bottomSpaceH4: 1rem;
+$bottomSpaceH5: 1rem;
+$bottomSpaceH6: .5rem;
+
+////Animations
+$hoverAnimation: 240ms ease-in;
+$hoverAnimationAll: all $hoverAnimation;
+$layoutTransitionSeed: 400ms ease-out;
+$borderDefaultRadius: 0 !default;
+
+
+////GRID
+$maxGridCols: 6;
+$columnSpace: 1.4rem;
+$columnSingleSpace: $columnSpace / 2;
+$smallSpace: .6rem / 2;
+$lineSpace: .125rem;
+$contentBottomSpace: $columnSpace * 2;
+
+////LAYOUT
+$breakPointXXL: 1400px;
+$breakPointXL: 1200px;
+$breakPointL: 1024px;
+$breakPointM: 768px;
+$breakPointS: 650px;
+$breakPointXS: 400px;
+
+$breakPointMaxXXL: $breakPointXXL - 1;
+$breakPointMaxXL: $breakPointXL - 1;
+$breakPointMaxL: $breakPointL - 1;
+$breakPointMaxM: $breakPointM - 1;
+$breakPointMaxS: $breakPointS - 1;
+$breakPointMaxXS: $breakPointXS - 1;
+
+$iPhoneXMediaQuery: only screen and (device-width : 375px) and (device-height : 812px) and (-webkit-device-pixel-ratio : 3);
+
+$breakPoints: (
+    'xs': $breakPointXS,
+    's': $breakPointS,
+    'm': $breakPointM,
+    'l': $breakPointL,
+    'xl': $breakPointXL,
+    'xxl': $breakPointXXL,
+);
+
+$pageMaxWidth: 2000px;
+
+$defaultBoxShadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+
+$mainAsideWidth: 260px;
+
+////Buttons
+$btnBorderRadius: 0;
+$btnBorder: none;
+$btnOutlineBorder: 1px solid;
+$btnPadding: .5rem;
+$btnTransition: background-color $hoverAnimation, color $hoverAnimation, border-color $hoverAnimation;
+
+$btnPaddingY: .4rem !default;
+$btnPaddingX: .8rem !default;
+$btnLineHeight: 1.25 !default;
+$btnFontSize: $fontSizeDefault;
+$btnDisabledOpacity: .8;
+
+$btnSmallPaddingY: .2rem !default;
+$btnSmallPaddingX: .4rem !default;
+$btnSmallLineHeight: 1.25 !default;
+$btnSmallBorderRadius: $btnBorderRadius;
+$btnSmallFontSize: $fontSizeSmall;
+
+$btnDefaultColor: $fontColorDefault;
+$btnDefaultBg: $inverted;
+$btnDefaultHoverBg: darken($inverted, 10%);
+
+$btnPrimaryColor: $inverted;
+$btnPrimaryBg: $primary;
+$btnPrimaryHoverBg: darken($primary, 10%);
+
+$btnSecondaryColor: $inverted;
+$btnSecondaryBg: $secondary;
+$btnSecondaryHoverBg: darken($secondary, 7%);
+
+////HR
+$hrSize: 1px !default;
+$hrSpace: 1rem 0 !default;
+$hrColor: #aaa !default;
+
+
+//FORM
+$formFieldBottomSpace: $columnSpace;
+$formLegendHeight: 4rem;
+$inputPaddingX: .4rem;
+$inputPaddingYTop: .8rem;
+$inputPaddingYBottom: .2rem;
+$inputBg: transparent;
+$inputBorderBottomSize: 1px;
+$inputBorderBottomFocusSize: 2px;
+$inputBorderBottomStyle: solid $greyLighter;
+$formDefaultColor: $greyDefault;
+$labelBottomSpace: .3rem;
+$labelFontSize: $fontSizeDefault;
+$inputFontSize: $fontSizeDefault;
+$checkboxFontSize: .6rem;
+$checkboxBoxSize: 1.4rem;
+$checkboxBoxSpaceX: $columnSingleSpace;
+$checkboxBoxSpaceY: .125rem;
+$checkboxBoxBorderColor: $primary;
+$selectButtonsSpace: .3rem;
+$selectButtonsPadding: 0 .6rem;
+$selectButtonsBorder: 1px solid $greyDefault;
+$selectRangeButtonWidth: 1.625rem;
+$selectRangeButtonHeight: 2.2rem;
+$selectRangeBorderSize: 1px;
+$selectRangeBorderColor: $greyLighter;
+$selectRangeButtonColor: $inverted;
+$selectRangeButtonBg: $primary;
+$selectRangeLineMarkerColor: $selectRangeButtonBg;
+$selectArrowWidth: .8rem !default;
+$selectArrowHeight: .4rem !default;
+$selectArrowSpace: ($inputPaddingX + $selectArrowWidth + $inputPaddingX);
+
+
+$mainNavLinkPaddingY: .6rem;
+$mainNavLinkPaddingX: .4rem;
+
+$toggleAsideBtnWidth: 1.4rem;
+$toggleAsideBtnStrength: 2px;
+$toggleAsideBtnLineSpace: .4rem;
+$toggleAsideBtnInner: .4rem;
+$toggleAsideBtnColor: $primary;
+
+$accountNavArrowWidth: .8rem !default;
+$accountNavArrowHeight: .4rem !default;
+$accountNavArrowSpace: .6rem !default;
+$accountNavArrowMobileSpace: $accountNavArrowSpace * .8;
+$accountNavArrowColor: #c1c1c1 !default;
+$accountNavDropdownBg: #fff;
+$accountNavSpacer: 1px solid $greyLighter;
+$accountNavLinkSpaceX: $mainNavLinkPaddingX;
+$accountNavLinkSpaceY: $mainNavLinkPaddingY;
+$accountNavLinkColor: $fontColorDefault;
+$accountNavLinkHoverColor: $primary;
+$accountNavMetaLinkSpaceY: .5rem;
+
+$teaserInnerSpace: 1.5rem 1rem .5rem;
+
+$dtHasBorderColor: $greyLighter;
+$dlBlockSpaceX: $columnSingleSpace;
+$dlBlockSpaceY: $columnSingleSpace;
+$dlBlockFontWeight: $fontWeightThin;
+$dlBlockDtFontSize: $fontSizeSmall;
+
+$flag-icon-css-path: '/flags';
+$flag-icon-rect-path: '/4x3';
+$flag-icon-square-path: '/1x1';
+
+$paginationPageSingleSpace: 1px;
+$paginationPageSize: 2rem;
+$paginationPageBg: $teaserBg;
+$paginationPageHighlightBg: $primary;
+$paginationPageHighlightColor: $inverted;
+
+$alertOKColor: #279e19;
+$alertOKBg: #e8fdef;
+$alertErrorColor: #d91a1d;
+$alertErrorBg: #ffdddd;
+$alertWarningColor: #d98f44;
+$alertWarningBg: #fff9e6;

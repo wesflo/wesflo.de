@@ -1,0 +1,74 @@
+@mixin square($s) {
+    width: $s;
+    height: $s;
+}
+
+@mixin borderRadius($radius: $borderDefaultRadius) {
+    border-radius: $radius;
+}
+
+@mixin verticalCenterElement($position: relative) {
+    position: $position;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@mixin horizontalCenterElement($position: relative) {
+    position: $position;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@mixin centerElement($position: relative) {
+    @include position($position, 50% null null 50%);
+    transform: translate(-50%, -50%);
+}
+
+@mixin bottomSpace($s) {
+    margin-bottom: $s;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@mixin getCols($name) {
+    @for $i from 1 through $maxGridCols {
+        $class: $i;
+
+        @if type-of($name) == "string" {
+            $class: #{$name}-#{$i};
+        }
+
+        &.cols-#{$class} {
+            > * {
+                width: (100% / $i);
+            }
+        }
+    }
+}
+
+@mixin gridCols($name, $size) {
+    @if $size {
+        @media screen and (min-width: $size) {
+            @include getCols($name);
+        }
+    } @else {
+        @include getCols($name);
+    }
+
+}
+
+@mixin responsiveClasses($name, $size) {
+    @media screen and (min-width: $size) {
+        .hideAbove-#{$name} {
+            display: none !important;
+        }
+    }
+
+    @media screen and (max-width: ($size - 1)) {
+        .hideUnder-#{$name} {
+            display: none !important;
+        }
+    }
+}

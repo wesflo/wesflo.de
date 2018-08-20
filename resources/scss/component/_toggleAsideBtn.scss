@@ -1,0 +1,64 @@
+.toggleAsideBtn {
+    position: relative;
+    width: $toggleAsideBtnInner + $toggleAsideBtnWidth + $toggleAsideBtnInner;
+    height: $toggleAsideBtnInner + $toggleAsideBtnWidth + $toggleAsideBtnInner;
+    padding: 0;
+
+    span {
+        height: $toggleAsideBtnStrength;
+        width: $toggleAsideBtnWidth;
+        background-color: transparent;
+        @include position(absolute, 50% null null $toggleAsideBtnInner);
+        margin-top: ($toggleAsideBtnStrength / -2);
+        transition: all $hoverAnimation;
+
+        &,
+        &:before,
+        &:after {
+            box-shadow: 0 0 2px rgba(0,0,0, .5);
+        }
+
+        &:before,
+        &:after {
+            content: ' ';
+            display: block;
+            @include position(absolute, null null null 0);
+            height: $toggleAsideBtnStrength;
+            width: 80%;
+            background-color: $toggleAsideBtnColor;
+            transition: all $hoverAnimation;
+        }
+        &:before {
+            top: 0;
+            margin-bottom: ($toggleAsideBtnStrength / -2);
+            transform: rotate(-45deg);
+        }
+        &:after {
+            bottom: 0;
+            margin-top: ($toggleAsideBtnStrength / -2);
+            transform: rotate(45deg);
+        }
+    }
+}
+
+.asideClosed {
+    .toggleAsideBtn {
+        span {
+            background-color: $toggleAsideBtnColor;
+
+            &:before,
+            &:after {
+                transform: rotate(0);
+                width: 100%;
+            }
+
+            &:before {
+                top: -$toggleAsideBtnLineSpace;
+            }
+            &:after {
+                bottom: -$toggleAsideBtnLineSpace;
+            }
+        }
+    }
+
+}

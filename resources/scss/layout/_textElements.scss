@@ -1,0 +1,186 @@
+html,
+body {
+    -webkit-text-size-adjust: none;
+}
+
+body {
+    font-family: $fontFamilyDefault;
+    font-weight: $fontWeightDefault;
+    line-height: 1;
+    color: $fontColorDefault;
+    font-size: $emFontSize;
+}
+
+main {
+    font-size: $fontSizeDefault;
+}
+
+.ellipsis {
+    @include ellipsis();
+
+    * {
+        display: inline-block !important;
+    }
+}
+
+//h1, .h1,
+//h2, .h2,
+//h3, .h3,
+//h4, .h4,
+//h5, .h5,
+//h6, .h6 {
+//}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4 {
+    font-weight: $fontWeightThin;
+    line-height: 1.2;
+}
+
+h1, .h1 {
+    font-size: $fontSizeH1;
+    margin-bottom: $bottomSpaceH1;
+}
+
+h2, .h2 {
+    font-size: $fontSizeH2;
+    margin-bottom: $bottomSpaceH2;
+}
+
+h3, .h3 {
+    font-size: $fontSizeH3;
+    margin-bottom: $bottomSpaceH3;
+}
+
+h4, .h4 {
+    font-size: $fontSizeH4;
+    margin-bottom: $bottomSpaceH4;
+}
+
+h5, .h5 {
+    font-size: $fontSizeH5;
+    margin-bottom: $bottomSpaceH5;
+}
+
+h6, .h6 {
+    font-size: $fontSizeH6;
+    margin-bottom: $bottomSpaceH6;
+}
+
+p {
+    line-height: $lineHeightParagraph;
+    margin-bottom: $textBottomSpace;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+a {
+    color: $primary;
+    text-decoration: none;
+    transition: color $hoverAnimation, background $hoverAnimation, border $hoverAnimation;
+
+    i {
+        transition: color $hoverAnimation;
+    }
+}
+
+.centerText {
+    text-align: center;
+}
+
+.medium {
+    font-size: $fontSizeMedium;
+}
+
+small, .small {
+    font-size: $fontSizeSmall;
+}
+
+.iconSpaceRight {
+    margin-right: $smallSpace;
+}
+
+.iconSpaceLeft {
+    margin-left: $smallSpace;
+}
+
+.womanIcon {
+    color: #ff4bae;
+}
+
+.manIcon {
+    color: #449eff;
+}
+
+.brandPrimary {
+    color: $primary;
+}
+
+.brandSecondary {
+    color: $secondary;
+}
+
+dl, ol, ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
+}
+
+ul, ol {
+    &.circle,
+    &.disc,
+    &.square,
+    &.lower-alpha,
+    &.decimal,
+    &.decimal-leading-zero {
+        margin: 0 0 $textBottomSpace 20px;
+
+        &,
+        li {
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        li {
+            margin-bottom: $textBottomSpace / 2;
+        }
+
+        &.small {
+            li {
+                margin-bottom: $textBottomSpace / 4;
+            }
+        }
+    }
+
+    &.circle {
+        list-style: circle outside;
+    }
+    &.disc {
+        list-style: disc outside;
+    }
+    &.square {
+        list-style: square outside;
+    }
+    &.lower-alpha {
+        list-style: lower-alpha outside;
+    }
+    &.decimal {
+        list-style: decimal outside;
+    }
+    &.decimal-leading-zero {
+        list-style: decimal-leading-zero outside;
+    }
+    &.lower-roman {
+        list-style: lower-roman;
+    }
+    &.upper-roman {
+        list-style: upper-roman;
+    }
+}
+
