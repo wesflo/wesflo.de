@@ -1,3 +1,22 @@
-body {
-    background: #fff;
-}
+@import "../../node_modules/bourbon/core/_bourbon.scss";
+@import "config/variables";
+
+@import "config/fontFamily";
+@import "config/vendors";
+@import "helper/functions";
+@import "helper/keyframes";
+@import "helper/mixins";
+@import "helper/reset";
+
+//Layout
+@import "layout/layout";
+@import "layout/textElements";
+
+//Components
+@import "component/imgWrp";
+@import "component/toggleAsideBtn";
+
+//Modules
+@import "module/mainNav";
+
+//page

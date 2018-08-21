@@ -1,4 +1,4 @@
-.cntLoadingAnimation {
+.loadingSpinner {
     @include position(fixed, 40% null null 50%);
     width: 4rem;
     transform: translate(-50% -50%);

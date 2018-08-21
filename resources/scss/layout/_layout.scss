@@ -7,75 +7,18 @@ body {
     position: relative;
     z-index: 1;
     max-width: $pageMaxWidth;
-    margin: 0 auto;
-    padding-left: $columnSingleSpace;
-    padding-right: $columnSingleSpace;
-}
-
-.mainWrap {
-    position: relative;
-    z-index: 2;
-    margin-left: $mainAsideWidth;
-    transition: margin-left $layoutTransitionSeed;
-}
-
-.mainContainer {
-    min-height: 100vh;
+    padding: 0 $pagePaddingY;
     width: 100%;
-    max-width: $pageMaxWidth;
-    padding: 0 $columnSingleSpace $contentBottomSpace $contentBottomSpace;
-    margin: 0 auto 0 0;
-    transition: margin-left $layoutTransitionSeed;
-}
-
-.cntBtnSpace {
-    margin-bottom: $contentBottomSpace;
-}
-
-.mainAside {
-    @include position(fixed, 0 null 0 0);
-    background: $mainAsideBG;
-    box-shadow: 5px 0 20px rgba(0, 0, 0, .2);
-    z-index: 50;
-
-    .toggleAsideBtn {
-        @include position(absolute, 0 null null 0);
-    }
-
-    .wrp {
-        width: $mainAsideWidth;
-        overflow: hidden;
-        transition: width $layoutTransitionSeed;
-    }
-
-    .cnt {
-        width: $mainAsideWidth;
-        padding: $columnSpace;
-    }
-}
-
-.asideClosed {
-    .mainAside {
-        .wrp {
-            width: 0;
-        }
-    }
-    .mainWrap {
-        margin-left: $columnSingleSpace;
-    }
+    margin: 0 auto;
 }
 
 img {
     max-width: 100%;
-    display: inline-block;
+    display: block;
 }
 
 .hidden {
     display: none !important;
-}
-
-.pullRight {
-    float: right;
 }
 
 

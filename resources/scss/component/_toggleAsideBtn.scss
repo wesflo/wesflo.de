@@ -10,7 +10,7 @@
         background-color: transparent;
         @include position(absolute, 50% null null $toggleAsideBtnInner);
         margin-top: ($toggleAsideBtnStrength / -2);
-        transition: all $hoverAnimation;
+        transition: $hoverAnimationAll;
 
         &,
         &:before,
@@ -26,7 +26,7 @@
             height: $toggleAsideBtnStrength;
             width: 80%;
             background-color: $toggleAsideBtnColor;
-            transition: all $hoverAnimation;
+            transition: $hoverAnimationAll;
         }
         &:before {
             top: 0;

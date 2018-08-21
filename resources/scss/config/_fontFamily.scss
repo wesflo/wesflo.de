@@ -1,31 +1,40 @@
 @font-face {
-    font-family: 'Roboto';
+    font-family: 'Kanit';
     font-style: normal;
     font-weight: 100;
-    src: local('Roboto Thin'), local('Roboto-Thin'), url(/font/Roboto/Roboto-Thin.ttf) format('woff2');
+    src: local('Kanit Thin'), local('Kanit-Thin'), url(/font/Kanit/Kanit-Thin.ttf) format('ttf');
 }
 
 @font-face {
-    font-family: 'Roboto';
+    font-family: 'Kanit';
     font-style: normal;
     font-weight: 300;
-    src: local('Roboto Light'), local('Roboto-Light'), url(/font/Roboto/Roboto-Light.ttf) format('woff2');
+    src: local('Kanit Light'), local('Kanit-Light'), url(/font/Kanit/Kanit-Light.ttf) format('ttf');
 }
+
+//@font-face {
+//    font-family: 'Kanit';
+//    font-style: normal;
+//    font-weight: 400;
+//    src: local('Kanit'), local('Kanit-Regular'), url(/font/Kanit/Kanit-Regular.ttf) format('ttf');
+//}
+
 @font-face {
-    font-family: 'Roboto';
+    font-family: 'Kanit';
     font-style: normal;
-    font-weight: 400;
-    src: local('Roboto'), local('Roboto-Regular'), url(/font/Roboto/Roboto-Regular.ttf) format('woff2');
+    font-weight: 600;
+    src: local('Kanit Medium'), local('Kanit-Medium'), url(/font/Kanit/Kanit-Medium.ttf) format('ttf');
 }
 @font-face {
-    font-family: 'Roboto';
-    font-style: italic;
-    font-weight: 400;
-    src: local('Roboto Italic'), local('Roboto-Italic'), url(/font/Roboto/Roboto-Italic.ttf) format('woff2');
-}
-@font-face {
-    font-family: 'Roboto';
+    font-family: 'Kanit';
     font-style: normal;
-    font-weight: 500;
-    src: local('Roboto Medium'), local('Roboto-Medium'), url(/font/Roboto/Roboto-Medium.ttf) format('woff2');
+    font-weight: 600;
+    src: local('Kanit Bold'), local('Kanit-Bold'), url(/font/Kanit/Kanit-Bold.ttf) format('ttf');
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Open Sans'), local('Open-Sans'), url(/font/OpenSans/OpenSans.ttf) format('ttf');
 }

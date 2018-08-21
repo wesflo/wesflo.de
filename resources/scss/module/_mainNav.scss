@@ -1,7 +1,4 @@
 .mainNav {
-    li {
-        position: relative;
-    }
 
     a {
         display: block;
@@ -18,34 +15,5 @@
         &.active {
             color: $primary;
         }
-    }
-
-    > ul {
-        $border: 1px solid lighten($mainAsideBG, 20%);
-
-        > li {
-            border-bottom: $border;
-
-            &:first-child {
-                border-top: $border;
-            }
-        }
-    }
-
-    ul {
-        ul {
-            padding-bottom: $mainNavLinkPaddingY;
-        }
-    }
-
-    div {
-        a {
-            padding: $smallSpace $mainNavLinkPaddingX $smallSpace $columnSpace;
-            font-size: $fontSizeMedium;
-        }
-    }
-
-    .toggleCollapseBtn {
-        height: $mainNavLinkPaddingY + $mainNavLinkPaddingY + 1.15rem;
     }
 }

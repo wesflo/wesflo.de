@@ -50,18 +50,9 @@ table {
     border-spacing: 0;
 }
 
-/* change border colour to suit your needs */
-hr {
-    display: block;
-    height: $hrSize;
-    background: $hrColor;
-    border: 0;
-    margin: $hrSpace;
-    padding: 0;
-}
-
 input, select {
     vertical-align: middle;
+    -webkit-appearance: none;
 }
 
 button {
@@ -84,27 +75,3 @@ menu {
     box-sizing: border-box;
 }
 
-
-input[type="date" ],
-input[type="datetime-local"],
-input[type="month"],
-input[type="time"],
-input[type="week"] {
-    font-family: $fontFamilyDefault;
-    -webkit-padding-start: 1px;
-}
-
-input, textarea, keygen, select, button {
-    border-radius: 0;
-    margin: 0;
-}
-
-fieldset {
-    -webkit-margin-start: 0;
-    -webkit-margin-end: 0;
-    -webkit-padding-before: 0;
-    -webkit-padding-start: 0;
-    -webkit-padding-end: 0;
-    -webkit-padding-after: 0;
-    min-width: 0;
-}
