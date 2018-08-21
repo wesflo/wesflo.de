@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from 'react-dom';
 import "../scss/app.scss";
 import { AppContainer } from 'react-hot-loader';
-import App from './containers/App';
+import App from './App';
 
 const render = () => {
     ReactDOM.render(
@@ -17,8 +17,8 @@ render();
 
 // Hot Module Replacement API
 if (module.hot) {
-    module.hot.accept('./containers/App', () => {
+    module.hot.accept('./App', () => {
         render(App);
-        render(require('./containers/App'))
+        render(require('./App'))
     });
 }

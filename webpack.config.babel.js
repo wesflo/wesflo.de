@@ -62,6 +62,12 @@ export default function (env) {
         devServer: {
             contentBase: 'public',
             hot: true,
+            historyApiFallback: {
+                disableDotRule: true
+            },
+            stats: {
+                colors: true
+            }
         },
         devtool: 'source-map',
         plugins: [

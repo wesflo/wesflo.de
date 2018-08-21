@@ -1,4 +1,5 @@
 .mainNav {
+    @include position(fixed, 0 0 null null);
 
     a {
         display: block;

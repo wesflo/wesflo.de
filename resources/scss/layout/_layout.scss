@@ -1,6 +1,22 @@
 body {
     background: $bodyBg;
+    overflow: hidden;
     overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.app {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+main {
+    @include position(fixed, 0 0 0 0);
+    .scrollWrapper {
+        margin-top: 0;
+        transition: margin-top 600ms ease-in-out;
+    }
 }
 
 .container {
