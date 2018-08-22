@@ -1,30 +1,4 @@
-$panels: (
-    'home',
-    'skills',
-    'vitae',
-    'projects',
-    'interests',
-    'contact',
-);
-
 // Colors
-$panelBgColor: (
-    'home': #f5f0ea,
-    'skills': #00b4b1,
-    'vitae': #243f93,
-    'projects': #74a345,
-    'interests': #b11f24,
-    'contact': #f5f0ea,
-);
-
-$panelColor: (
-    'home': #424242,
-    'skills': #f9e093,
-    'vitae': #f3896f,
-    'projects': #c2e8fb,
-    'interests': #9cd5c4,
-    'contact': #424242,
-);
 $primary: #449eff !default;
 $secondary: #f21f96 !default;
 $inverted: #fff !default;
@@ -111,13 +85,61 @@ $toggleAsideBtnInner: .4rem;
 $toggleAsideBtnColor: $primary;
 
 ////Triangles
-$triangleSize: 300px;
+$triangleSize: 340px;
 $triangleBorderColor: #000;
 $triangleBgColor: #000;
 $triangleBorderSize: 4px;
 $triangleStripeSize: 2px;
 $triangleStripeColor: #000;
 
+//Panels
+$panels: (
+    'home',
+    'skills',
+    'work',
+    'education',
+    'contact',
+);
+
+$panelBgColor: (
+    'home': #f5f0ea,
+    'skills': #00b4b1,
+    'work': #243f93,
+    'education': #74a345,
+    'contact': #b11f24,
+);
+
+$panelColor: (
+    'home': #424242,
+    'skills': #f9e093,
+    'work': #f3896f,
+    'education': #c2e8fb,
+    'contact': #9cd5c4,
+);
+
+$panelDeg: (
+    'home': 150deg,
+    'skills': 60deg,
+    'work': 195deg,
+    'education': 40deg,
+    'contact': 105deg,
+);
+
+$panelPosTop: (
+    'home': 0,
+    'skills': -60px,
+    'work': 20px,
+    'education': -100px,
+    'contact': 0,
+);
+
+$panelPosLeft: (
+    'home': 25px,
+    'skills': 25px,
+    'work': 0,
+    'education': 40deg,
+    'contact': 25px,
+);
 
 
 

@@ -3,7 +3,7 @@ import React from "react";
 export default class extends React.Component {
     render() {
         return (
-           <div className={'pagePanel projects'} id={'projectsPanel'}>
+           <div className={'pagePanel education'} id={'educationPanel'}>
                <div className={'col mood'}>
                    <h2>wefwef sdvf</h2>
                </div>
