@@ -11,19 +11,28 @@ class Component extends React.Component {
             triangleClassName: 'hidden',
             triangleTxt: null,
         };
+        this.panels = [];
         this.panelCount = Object.keys(navigation).length;
         this.scrollHandler = 'scrollBehavior' in document.documentElement.style ? this.scrollIntoView : this.animateScrolling;
+        this.wheelTimeout = null;
         this.scrollTimeout = null;
 
         this.addEvents();
-        this.checkLocation(this.props.location.pathname);
     }
 
     addEvents() {
         let prefix = !('onwheel' in document.createElement('div')) ? 'mouse' : '';
-
         window.addEventListener('scroll', this.onScroll);
         document.addEventListener(`${prefix}wheel`, this.onMouseWheel); //IE9, Chrome, Safari, Opera
+    }
+
+    setPanels(){
+        this.panels = document.getElementsByClassName('pagePanel');
+    }
+
+    componentDidMount() {
+        setTimeout(this.checkLocation, 100, this.props.location.pathname);
+        this.setPanels();
     }
 
     componentWillUpdate(nextProps) {
@@ -32,56 +41,87 @@ class Component extends React.Component {
         }
     }
 
-    checkLocation(pathname) {
+    checkLocation = (pathname) => {
         let key = pathname.split('/')[1];
-        if(key && navigation[key]){
+
+        if (key && navigation[key]) {
             this.setActivePanel(key);
         }
-    }
+    };
 
     setActivePanel(key) {
         let keyPos = Object.keys(navigation).indexOf(key);
-        this.setState({activePanelIndex: keyPos});
-
-        let navigationObj = navigation[key];
-        this.scrollHandler(key);
-
-        setTimeout(() => {
-            this.setState({
-                triangleClassName: key,
-                triangleTxt: navigationObj.label
-            });
-        }, 200);
-    }
-
-    animateScrolling(key) {
-        console.log('animateScrolling', key);
-    }
-
-    scrollIntoView(key) {
         let panel = document.getElementById(`${key}Panel`);
+
         if(panel){
-            panel.scrollIntoView({ block: 'end',  behavior: 'smooth' });
+            let navigationObj = navigation[key];
+            this.setState({activePanelIndex: keyPos});
+            this.scrollHandler(keyPos, panel);
+
+            setTimeout(() => {
+                this.setState({
+                    triangleClassName: key,
+                    triangleTxt: navigationObj.label
+                });
+            }, 200);
         }
+
     }
 
-    onScroll = (e) => {
-//        console.log(e);
-//        e.preventDefault();
+    animateScrolling(keyPos, panel) {
+        let start = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        let to = (window.innerHeight || document.body.clientHeight) * keyPos;
+        let change = to - start;
+        let currentTime = 0;
+        let increment = 20;
+        let duration = 600;
+
+        let animateScroll = () => {
+            currentTime += increment;
+            document.documentElement.scrollTop = this.easeOutCubic(currentTime, start, change, duration);
+
+            if (currentTime < duration) {
+                window.setTimeout(animateScroll, increment);
+            }
+        };
+        animateScroll();
+        console.log('animateScrolling');
+    }
+
+    scrollIntoView(keyPos, panel) {
+        panel.scrollIntoView({block: 'center', behavior: 'smooth'});
+    }
+
+    onScroll = () => {
+        window.clearTimeout(this.scrollTimeout);
+        this.scrollTimeout = window.setTimeout(this.getElementsInViewport, 200);
+    };
+
+    getElementsInViewport = () => {
+        let viewPortStart = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        let viewportEnd = viewPortStart + (window.innerHeight || document.body.clientHeight);
+        console.log( viewPortStart, viewportEnd );
+
+
+
     };
 
     onMouseWheel = (e) => {
         let value = e.wheelDelta || -e.deltaY || -e.detail;
         let direction = Math.max(-1, Math.min(1, value)) * -1;
 
-        window.clearTimeout(this.scrollTimeout);
-        this.scrollTimeout = window.setTimeout(() => {
+        window.clearTimeout(this.wheelTimeout);
+        this.wheelTimeout = window.setTimeout(() => {
             let index = this.state.activePanelIndex + direction;
-            if(index >= 0 && index < this.panelCount ) {
-                this.setActivePanel(Object.keys(navigation)[index]);
+            if (index >= 0 && index < this.panelCount) {
+                this.props.history.push(this.props.match.url + Object.keys(navigation)[index]);
             }
         }, 300);
         e.preventDefault();
+    };
+
+    easeOutCubic(t, b, c, d) {
+        return c*((t=t/d-1)*t*t + 1) + b;
     };
 
     render() {
