@@ -27,7 +27,19 @@ class Component extends React.Component {
     }
 
     setPanels(){
-        this.panels = document.getElementsByClassName('pagePanel');
+        let panels = document.getElementsByClassName('pagePanel');
+        let panelWrapperRect = document.querySelector('main').getBoundingClientRect();
+
+        this.panels = Array.prototype.map.call(panels, panel => {
+            let panelRect = panel.getBoundingClientRect();
+            return {
+                ...panel,
+                key: panel.id.replace('Panel', ''),
+                absoluteRectTop: panelRect.top - panelWrapperRect.top
+            }
+        });
+
+        this.getPanelsInViewport();
     }
 
     componentDidMount() {
@@ -57,7 +69,6 @@ class Component extends React.Component {
             let navigationObj = navigation[key];
             this.setState({activePanelIndex: keyPos});
             this.scrollHandler(keyPos, panel);
-
             setTimeout(() => {
                 this.setState({
                     triangleClassName: key,
@@ -94,16 +105,31 @@ class Component extends React.Component {
 
     onScroll = () => {
         window.clearTimeout(this.scrollTimeout);
-        this.scrollTimeout = window.setTimeout(this.getElementsInViewport, 200);
+        this.scrollTimeout = window.setTimeout(this.getPanelsInViewport, 200);
     };
 
-    getElementsInViewport = () => {
+    getPanelsInViewport = () => {
         let viewPortStart = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-        let viewportEnd = viewPortStart + (window.innerHeight || document.body.clientHeight);
-        console.log( viewPortStart, viewportEnd );
+        let windowHeight = window.innerHeight || document.body.clientHeight;
+        let viewportEnd = viewPortStart + windowHeight;
+        let panelsInViewport = [];
 
-
-
+        this.panels.map(panel => {
+            let panelRectBottom = panel.absoluteRectTop + windowHeight;
+            if (
+                (panel.absoluteRectTop > viewPortStart && panel.absoluteRectTop < viewportEnd)
+                || (panelRectBottom < viewportEnd && panelRectBottom > viewPortStart)
+            ){
+                let areaSize = (panel.absoluteRectTop > viewPortStart && panel.absoluteRectTop < viewportEnd) ? (viewportEnd - panel.absoluteRectTop) : (panelRectBottom - viewPortStart);
+                panelsInViewport[areaSize] = panel.key;
+            }
+        });
+        let sortedKeys = Object.keys(panelsInViewport).sort((a, b) => (b-a));
+        if(sortedKeys[0] && panelsInViewport[sortedKeys[0]]) {
+            let key = panelsInViewport[sortedKeys[0]];
+            this.props.history.push(this.props.match.url + key);
+            this.setActivePanel(key);
+        }
     };
 
     onMouseWheel = (e) => {
