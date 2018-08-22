@@ -44,12 +44,12 @@
     }
 
     .triangle {
-        position: absolute;
+        @include position(absolute, 0 null null 45px);
         width: $triangleSize;
         padding-bottom: ($triangleSize / 1.41421356237);
         overflow: hidden;
         box-sizing: content-box;
-        transform: rotate(105deg) translate(-45%, 5%);
+        transform: rotate(105deg);
         animation: 6s ease-in-out infinite;
 
         &:before {
@@ -63,7 +63,7 @@
 
         &,
         &:before {
-            transition: all 400ms ease-out;
+            transition: all 600ms ease-out;
         }
     }
 
@@ -73,7 +73,7 @@
         border-right: $triangleBorderSize solid transparent;
         border-left: $triangleBorderSize solid transparent;
         animation-name: floatTriangleOutline;
-        opacity: .2;
+        opacity: .1;
 
         &:before {
             border-top: $triangleBorderSize solid $triangleBorderColor;
@@ -81,42 +81,17 @@
         }
     }
 
-    .stripes {
+    .area {
         margin: 20px auto auto 30px;
         animation-name: floatTriangleStripes;
-        opacity: .2;
-    }
+        opacity: .08;
 
-    @each $key in $panels {
-        &.#{$key} {
-
-
-            $c: darken(map-get($panelBgColor, $key), 50%);
-
-            .outline {
-                border-bottom-color: $c;
-
-                &:before {
-                    border-top-color: $c;
-                    border-left-color: $c;
-                }
-            }
-
-            .stripes {
-                &:before {
-                    $c: darken(map-get($panelBgColor, $key), 50%);
-                    background: repeating-linear-gradient(
-                            -90deg,
-                            transparent,
-                            transparent $triangleStripeSize,
-                            $c $triangleStripeSize,
-                            $c (2 * $triangleStripeSize)
-                    )
-                }
-            }
+        &:before {
+            background: $triangleBgColor;
         }
     }
 
+    &.home,
     &.skills {
         h1 {
             width: 190px;
@@ -125,7 +100,7 @@
 
     &.vitae {
         h1 {
-            width: 180px;
+            width: 170px;
         }
     }
 

@@ -1,6 +1,7 @@
 import React from "react";
 import {withRouter} from "react-router-dom";
 import navigation from "../config/navigation";
+import MainNav from "./MainNav";
 
 class Component extends React.Component {
     constructor(props) {
@@ -9,13 +10,12 @@ class Component extends React.Component {
         this.state = {
             containerMarginTop: 0,
             triangleClassName:'home',
-            triangleTxt: '',
+            triangleTxt: home.label,
         }
     }
 
     componentDidMount(){
         this.appContainer = document.getElementById('app');
-        this.appContainer.style.height = (Object.keys(navigation).length * 100) + 'vh';
     }
 
     componentWillUpdate(nextProps) {
@@ -27,9 +27,6 @@ class Component extends React.Component {
                 let navigationObj = navigation[target];
                 let panel = document.getElementById(`${target}Panel`);
                 window.scrollTo(0, window.innerHeight * keyPos);
-                let containerMarginTop = `-${keyPos * 100}vh`;
-
-                this.setState({containerMarginTop});
 
                 setTimeout(()=>{
                     this.setState({
@@ -42,17 +39,16 @@ class Component extends React.Component {
     }
 
     render() {
-        let {containerMarginTop, triangleClassName, triangleTxt} = this.state;
+        let {triangleClassName, triangleTxt} = this.state;
         return ([
+            <MainNav key={'mainNav'} />,
             <div className={`mainTriangle ${triangleClassName}`} key={'centerTriangle'}>
                 <h1>{triangleTxt}</h1>
                 <div className="triangle outline"> </div>
-                <div className="triangle stripes"> </div>
+                <div className="triangle area"> </div>
             </div>,
             <main key={'main'}>
-                <div className={'scrollWrapper'} style={{marginTop: containerMarginTop}}>
-                    {this.props.children}
-                </div>
+                {this.props.children}
             </main>
         ])
     }
