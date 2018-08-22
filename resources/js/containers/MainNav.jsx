@@ -9,9 +9,13 @@ export default class extends React.Component {
         for(let key in navigation) {
             if (!navigation.hasOwnProperty(key)) continue;
             let link = navigation[key];
+            let props = {
+                to: link.to,
+                key: key,
+            };
 
             nav.push(
-                <NavLink {...link} key={key}>
+                <NavLink {...props}>
                     {link.label}
                 </NavLink>
             )

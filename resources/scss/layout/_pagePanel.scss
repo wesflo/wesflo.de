@@ -1,3 +1,30 @@
 .pagePanel {
     height: 100vh;
+    display: flex;
+
+    .col {
+        flex: 0 0 50%
+    }
+
+    .mood {
+        position: relative;
+        z-index: 4;
+
+        &:after {
+            content: '';
+        }
+    }
+
+
+    @each $key in $panels {
+        &.#{$key} {
+            background: map-get($panelBgColor, $key);
+
+            .mood {
+                background: darken( map-get($panelBgColor, $key), 5%);
+            }
+        }
+    }
+
+
 }

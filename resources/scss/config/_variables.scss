@@ -1,11 +1,37 @@
+$panels: (
+    'home',
+    'skills',
+    'vitae',
+    'projects',
+    'interests',
+    'contact',
+);
+
 // Colors
-$primary: #44a800 !default;
-$secondary: #449eff !default;
+$panelBgColor: (
+    'home': #f5f0ea,
+    'skills': #00b4b1,
+    'vitae': #243f93,
+    'projects': #74a345,
+    'interests': #b11f24,
+    'contact': #f5f0ea,
+);
+
+$panelColor: (
+    'home': #424242,
+    'skills': #f9e093,
+    'vitae': #f3896f,
+    'projects': #c2e8fb,
+    'interests': #9cd5c4,
+    'contact': #424242,
+);
+$primary: #449eff !default;
+$secondary: #f21f96 !default;
 $inverted: #fff !default;
-$bodyBg: #eee !default;
+$bodyBg: #f5f0ea !default;
 $mainAsideBG: #343434 !default;
 
-$greyDefault: #585858;
+$greyDefault: #424242;
 $greyLighter: lighten($greyDefault, 40%) !default;
 $greyLight: lighten($greyDefault, 20%) !default;
 $greyDark: darken($greyDefault, 30%) !default;
@@ -83,3 +109,32 @@ $toggleAsideBtnStrength: 2px;
 $toggleAsideBtnLineSpace: .4rem;
 $toggleAsideBtnInner: .4rem;
 $toggleAsideBtnColor: $primary;
+
+////Triangles
+$triangleSize: 300px;
+$triangleBorderColor: #000;
+$triangleBorderSize: 4px;
+$triangleStripeSize: 2px;
+$triangleStripeColor: #000;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

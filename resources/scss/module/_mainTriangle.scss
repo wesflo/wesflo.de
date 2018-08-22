@@ -1,0 +1,142 @@
+@keyframes floatTriangleOutline {
+    0% {
+        margin-top: 0;
+    }
+    50% {
+        margin-top: -10px;
+    }
+    100% {
+        margin-top: 0;
+    }
+}
+
+@keyframes floatTriangleStripes {
+    0% {
+        margin-top: 20px;
+    }
+    50% {
+        margin-top: 30px;
+    }
+    100% {
+        margin-top: 20px;
+    }
+}
+
+.mainTriangle {
+    $s: 300px;
+    @include position(fixed, 50% null null 50%);
+    z-index: 50;
+    transform: translate(-50%, -50%);
+    width: $s;
+
+    h1 {
+        display: block;
+        color: #fff;
+        font-size: 7rem;
+        text-transform: uppercase;
+        letter-spacing: -.14em;
+        font-family: $fontFamilyHeadline;
+        font-weight: 700;
+        text-align: center;
+        word-break: break-all;
+        line-height: 5rem;
+        margin: 0 auto;
+    }
+
+    .triangle {
+        position: absolute;
+        width: $triangleSize;
+        padding-bottom: ($triangleSize / 1.41421356237);
+        overflow: hidden;
+        box-sizing: content-box;
+        transform: rotate(105deg) translate(-45%, 5%);
+        animation: 6s ease-in-out infinite;
+
+        &:before {
+            content: '';
+            @include position(absolute, null null 0 0);
+            @include square(100%);
+            box-sizing: border-box;
+            transform-origin: 0 100%;
+            transform: rotate(45deg);
+        }
+
+        &,
+        &:before {
+            transition: all 400ms ease-out;
+        }
+    }
+
+    .outline {
+        z-index: 3;
+        border-bottom: $triangleBorderSize solid $triangleBorderColor;
+        border-right: $triangleBorderSize solid transparent;
+        border-left: $triangleBorderSize solid transparent;
+        animation-name: floatTriangleOutline;
+        opacity: .2;
+
+        &:before {
+            border-top: $triangleBorderSize solid $triangleBorderColor;
+            border-left: $triangleBorderSize solid $triangleBorderColor;
+        }
+    }
+
+    .stripes {
+        margin: 20px auto auto 30px;
+        animation-name: floatTriangleStripes;
+        opacity: .2;
+    }
+
+    @each $key in $panels {
+        &.#{$key} {
+
+
+            $c: darken(map-get($panelBgColor, $key), 50%);
+
+            .outline {
+                border-bottom-color: $c;
+
+                &:before {
+                    border-top-color: $c;
+                    border-left-color: $c;
+                }
+            }
+
+            .stripes {
+                &:before {
+                    $c: darken(map-get($panelBgColor, $key), 50%);
+                    background: repeating-linear-gradient(
+                            -90deg,
+                            transparent,
+                            transparent $triangleStripeSize,
+                            $c $triangleStripeSize,
+                            $c (2 * $triangleStripeSize)
+                    )
+                }
+            }
+        }
+    }
+
+    &.skills {
+        h1 {
+            width: 190px;
+        }
+    }
+
+    &.vitae {
+        h1 {
+            width: 180px;
+        }
+    }
+
+    &.projects {
+        h1 {
+            width: 260px;
+        }
+    }
+
+    h1 {
+        position: relative;
+        z-index: 5;
+    }
+}
