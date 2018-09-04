@@ -1,0 +1,11 @@
+.pagePanel.home {
+    svg {
+        @include position(absolute, 50% null null 50%);
+        width: 40%;
+        transform: translate(-50%, -50%);
+    }
+
+    path {
+        fill: map-get($panelColor, 'home');
+    }
+}
