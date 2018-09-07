@@ -155,7 +155,7 @@ class Component extends React.Component {
         return ([
             <MainNav key={'mainNav'}/>,
             <div className={`mainTriangle ${triangleClassName}`} key={'centerTriangle'}>
-                <h1>{triangleTxt}</h1>
+                <span className={'h'}>{triangleTxt}</span>
                 <div className="triangle outline"></div>
                 <div className="triangle area"></div>
             </div>,

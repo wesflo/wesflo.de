@@ -35,7 +35,9 @@
     transform: translate(-50%, -50%);
     width: $s;
 
-    h1 {
+    .h {
+        position: relative;
+        z-index: 5;
         display: block;
         color: #fff;
         font-size: 7rem;
@@ -122,25 +124,20 @@
 
     &.home,
     &.skills {
-        h1 {
+        .h {
             width: 190px;
         }
     }
 
     &.work {
-        h1 {
+        .h {
             width: 170px;
         }
     }
 
     &.projects {
-        h1 {
+        .h {
             width: 260px;
         }
-    }
-
-    h1 {
-        position: relative;
-        z-index: 5;
     }
 }

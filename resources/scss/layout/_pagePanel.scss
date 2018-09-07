@@ -15,6 +15,18 @@
         }
     }
 
+    .bg {
+        @include position(absolute, 0 0 0 0);
+        background: center center transparent;
+        background-size: cover;
+
+        &:after {
+            content: '';
+            @include position(absolute, 0 0 0 0);
+            background: transparent url('/img/css/line-texture.png') repeat 0/8px;
+        }
+    }
+
 
     @each $key in $panels {
         &.#{$key} {
