@@ -1,6 +1,12 @@
 import React from "react";
 
 export default class extends React.Component {
+    getAge() {
+        let ageDifMs = Date.now() - (new Date('1984/03/06').getTime());
+        let ageDate = new Date(ageDifMs);
+        return Math.abs(ageDate.getUTCFullYear() - 1970);
+    };
+
     render() {
         return (
             <div className={'pagePanel home'} id={'homePanel'}>
@@ -23,7 +29,7 @@ export default class extends React.Component {
 
                         <p>
                             Hi,<br/>
-                            my name is Florian Wessner. I'm a 31 year old developer from Hamburg.<br />
+                            my name is Florian Wessner. I'm a {this.getAge()} year old developer from Hamburg.<br />
                             Let me give you a short introduction of myself, with all the key facts. If you want to know more about me just
                             further explore this page and don't be shy to contact me!
                             Thanks a lot for visiting.

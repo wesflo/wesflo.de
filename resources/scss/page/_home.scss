@@ -9,18 +9,8 @@
         fill: map-get($panelColor, 'home');
     }
 
-    .cnt {
-        display: flex;
-        align-items: center;
-    }
-
-    article {
-        padding: 0 2rem 0 35%;
-    }
-
     h1 {
         text-indent: -.3rem;
-        color: map-get($panelColor, 'home');
         margin-bottom: 0;
     }
 
