@@ -5,7 +5,7 @@ export default class extends React.Component {
         return (
             <div className={'pagePanel skills'} id={'skillsPanel'}>
                 <div className={'col mood'}>
-                    <h2>wefwef sdvf</h2>
+                    <div className="bg" style={{backgroundImage: 'url(\'img/bg/skills.jpg\')'}}> </div>
                 </div>
                 <div className={'col cnt'}>
                     <h2>wefwef sdvf</h2>

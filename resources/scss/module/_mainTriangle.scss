@@ -80,7 +80,7 @@
         border-bottom: $triangleBorderSize solid $triangleBorderColor;
         border-right: $triangleBorderSize solid transparent;
         border-left: $triangleBorderSize solid transparent;
-        animation-name: floatTriangleOutline;
+        //animation-name: floatTriangleOutline;
 
         &:before {
             border-top: $triangleBorderSize solid $triangleBorderColor;
@@ -90,7 +90,7 @@
 
     .area {
         margin: 20px auto auto 30px;
-        animation-name: floatTriangleStripes;
+        //animation-name: floatTriangleStripes;
 
         &:before {
             background: $triangleBgColor;
