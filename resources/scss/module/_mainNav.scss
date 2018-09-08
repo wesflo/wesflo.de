@@ -11,10 +11,17 @@
         font-weight: $fontWeightLight;
         font-size: $fontSizeLarge;
 
-        &:hover,
-        &:active,
-        &.active {
-            color: $primary;
+        &:hover {
+            font-weight: 700;
+        }
+
+        @each $key in $panels {
+            &.#{$key} {
+                &:active,
+                &.active {
+                    color: map-get($panelColor, $key);
+                }
+            }
         }
     }
 }

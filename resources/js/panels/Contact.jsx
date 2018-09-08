@@ -8,7 +8,13 @@ export default class extends React.Component {
                    <div className="bg" style={{backgroundImage: 'url(\'img/bg/contact.jpg\')'}}> </div>
                </div>
                <div className={'col cnt'}>
-                   <h2>wefwef sdvf</h2>
+                   <article>
+                       <a href='mailto:info@wesflo.de' className={'h1'}>
+                           <span>info@</span>
+                           <span>wesflo</span>
+                           <span>.de</span>
+                       </a>
+                   </article>
                </div>
            </div>
         )

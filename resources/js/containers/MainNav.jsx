@@ -12,6 +12,7 @@ export default class extends React.Component {
             let props = {
                 to: link.to,
                 key: key,
+                className: key,
             };
 
             nav.push(

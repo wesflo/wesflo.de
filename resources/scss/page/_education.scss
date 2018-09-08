@@ -1,0 +1,21 @@
+.pagePanel.education {
+    li {
+        margin-bottom: 2rem;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    h4 {
+        font-family: $fontFamilyHeadline;
+        font-size: 2rem;
+        color: map-get($panelColor, 'education');
+    }
+
+    em {
+        display: block;
+        font-size: .8rem;
+    }
+
+}
