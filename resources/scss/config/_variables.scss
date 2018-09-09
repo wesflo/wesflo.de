@@ -10,6 +10,8 @@ $greyLighter: lighten($greyDefault, 40%) !default;
 $greyLight: lighten($greyDefault, 20%) !default;
 $greyDark: darken($greyDefault, 30%) !default;
 
+$boxShadow: 0 0 1rem rgba(0,0,0, .8);
+
 //// FONTS
 $fontFamilyCopy: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 $fontFamilyHeadline: "Kanit", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
@@ -79,11 +81,11 @@ $btnDefaultHoverBg: darken($primary, 10%);
 $mainNavLinkPaddingY: .6rem;
 $mainNavLinkPaddingX: .4rem;
 
-$toggleAsideBtnWidth: 1.4rem;
-$toggleAsideBtnStrength: 2px;
-$toggleAsideBtnLineSpace: .4rem;
-$toggleAsideBtnInner: .4rem;
-$toggleAsideBtnColor: $primary;
+$menuBtnWidth: 2rem;
+$menuBtnStrength: 3px;
+$menuBtnLineSpace: .5rem;
+$menuBtnInner: .6rem;
+$menuBtnColor: #fff;
 
 ////Triangles
 $triangleSize: 340px;
@@ -106,7 +108,7 @@ $panelBgColor: (
     'home': #009ff5,
     'skills': #00b4b1,
     'work': #243f93,
-    'education': #59a717,
+    'education': #70a53e,
     'contact': #b11f24,
 );
 
@@ -114,8 +116,8 @@ $panelColor: (
     'home': #F9C193,
     'skills': #f9e093,
     'work': #f3896f,
-    'education': #ffcc2f,
-    'contact': #9cd5c4,
+    'education': #c2e8fb,
+    'contact': #30f5a7,
 );
 
 $panelDeg: (

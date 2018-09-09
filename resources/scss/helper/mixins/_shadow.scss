@@ -6,11 +6,3 @@
     text-shadow: (-$size) (-$size) $blur $color, $size (-$size) $blur $color, -$size $size $blur $color, $size $size $blur $color;
 }
 
-@mixin boxShadow($hover: false, $shadow: $boxShadow) {
-        box-shadow: $shadow;
-    @if $hover {
-        &:hover {
-            box-shadow: $boxShadowHover;
-        }
-    }
-}

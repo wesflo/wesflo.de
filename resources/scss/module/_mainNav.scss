@@ -1,27 +1,56 @@
 .mainNav {
     @include position(fixed, 0 0 null null);
+    z-index: 99;
+    box-shadow: $boxShadow;
+
+    .menuBtn {
+        z-index: 100;
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
 
     a {
-        display: block;
+        display: inline-block;
         padding: $mainNavLinkPaddingY $mainNavLinkPaddingX;
-        color: $inverted;
+        color: #424242;
         letter-spacing: 1px;
         text-transform: uppercase;
         transform: translateZ(1px);
-        font-weight: $fontWeightLight;
-        font-size: $fontSizeLarge;
+        font-family: $fontFamilyHeadline;
+        font-size: 2rem;
 
+        &:active,
+        &.active,
         &:hover {
+            color: $primary;
+        }
+        &:active,
+        &.active{
             font-weight: 700;
         }
+    }
 
-        @each $key in $panels {
-            &.#{$key} {
-                &:active,
-                &.active {
-                    color: map-get($panelColor, $key);
-                }
-            }
+    .navWrapper {
+        @include position(fixed, 0 50% null 50%);
+        width: 0;
+        overflow: hidden;
+        background-color: transparent;
+        transition: all 400ms ease-in-out;
+    }
+
+    &.showMenu {
+
+        .navWrapper {
+            left: 0;
+            right: 0;
+            width: 100%;
+            background-color: rgba(245,240,234, .95);
         }
     }
 }

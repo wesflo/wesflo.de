@@ -1,0 +1,57 @@
+.menuBtn {
+    @include position(absolute, 0 0 null null);
+    width: $menuBtnInner + $menuBtnWidth + $menuBtnInner;
+    height: $menuBtnInner + $menuBtnWidth + $menuBtnInner;
+    padding: 0;
+
+    span {
+        height: $menuBtnStrength;
+        width: $menuBtnWidth;
+        background-color: $menuBtnColor;
+        @include position(absolute, 50% null null $menuBtnInner);
+        margin-top: ($menuBtnStrength / -2);
+        transition: $hoverAnimationAll;
+
+        &:before,
+        &:after {
+            content: ' ';
+            display: block;
+            @include position(absolute, null null null 0);
+            transform: rotate(0);
+            width: 100%;
+            height: $menuBtnStrength;
+            background-color: $menuBtnColor;
+            transition: $hoverAnimationAll;
+        }
+        &:before {
+            top: -$menuBtnLineSpace;
+            margin-bottom: ($menuBtnStrength / -2);
+        }
+        &:after {
+            bottom: -$menuBtnLineSpace;
+            margin-top: ($menuBtnStrength / -2);
+        }
+    }
+
+    &.cross {
+        span {
+            background-color: transparent;
+
+            &:before,
+            &:after {
+                width: 80%;
+                background-color: $primary;
+            }
+
+            &:before {
+                top: 0;
+                transform: rotate(-45deg);
+            }
+            &:after {
+                bottom: 0;
+                transform: rotate(45deg);
+            }
+        }
+    }
+}
+

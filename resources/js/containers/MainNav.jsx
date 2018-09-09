@@ -3,7 +3,13 @@ import {NavLink} from 'react-router-dom';
 import navigation from '../config/navigation'
 
 export default class extends React.Component {
+    constructor(props){
+        super(props);
 
+        this.state = {
+            navOpen: false
+        }
+    }
     renderMainNav() {
         let nav = [];
         for(let key in navigation) {
@@ -24,11 +30,26 @@ export default class extends React.Component {
         return nav;
     }
 
+    toggleMenu = () =>{
+        let {navOpen} = this.state;
+        this.setState({navOpen: !navOpen});
+    };
+
     render() {
+        let {navOpen} = this.state;
+
         return (
-            <nav className={'mainNav'}>
-                {this.renderMainNav()}
-            </nav>
+            <div className={`mainNav ${navOpen ? 'showMenu' : ''}`}>
+                <button type={'button'} className={`btn menuBtn ${navOpen ? 'cross' : ''}`} onClick={this.toggleMenu}>
+                    <span> </span>
+                </button>
+                <div className={'navWrapper'}>
+                    <nav>
+                        {this.renderMainNav()}
+                    </nav>
+                </div>
+            </div>
+
         );
     }
 }
