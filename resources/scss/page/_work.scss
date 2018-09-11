@@ -5,6 +5,58 @@
         justify-content: center;
     }
 
+    .slider {
+        width: 100%;
+        overflow: hidden;
+        padding: $panelArticleSpace;
+
+        .wrapper {
+            width: 200%;
+            display: flex;
+            align-items: center;
+            transition: margin-left 600ms ease-in-out;
+        }
+    }
+
+    menu {
+        display: flex;
+        padding: 0 0 2rem;
+        justify-content: center;
+        align-items: center;
+
+        .h1 {
+            margin: 0 1rem;
+        }
+
+        a {
+            display: block;
+            @include square(2rem);
+
+            &:before {
+                content: '';
+                display: block;
+                @include square(2rem);
+                border-top: 1px solid $fontColorDefault;
+                border-left: 1px solid $fontColorDefault;
+                transform: rotate(-45deg);
+            }
+
+            &:last-child:before {
+                border-left: 0;
+                border-right: 1px solid $fontColorDefault;
+                transform: rotate(45deg);
+            }
+            span {
+                display: none;
+            }
+        }
+    }
+
+    article {
+        padding: 0;
+        flex: 0 0 50%;
+    }
+
     li {
         margin-bottom: 2rem;
         font-size: 1rem;
@@ -14,6 +66,7 @@
         }
 
         ul {
+            margin-top: 2px;
             @include clearfix;
         }
 
@@ -24,6 +77,7 @@
             margin-right: $s;
             padding-right: $s;
             border-right: 1px solid $fontColorDefault;
+            font-size: .8em;
         }
     }
 
@@ -50,14 +104,6 @@
     em {
         font-size: .8rem;
         display: block;
-    }
-
-    article {
-        margin-bottom: 3rem;
-
-        &:last-child{
-            margin-bottom: 0;
-        }
     }
 
     .olderJobs {

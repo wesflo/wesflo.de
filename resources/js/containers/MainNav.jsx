@@ -10,6 +10,7 @@ export default class extends React.Component {
             navOpen: false
         }
     }
+
     renderMainNav() {
         let nav = [];
         for(let key in navigation) {
@@ -22,7 +23,7 @@ export default class extends React.Component {
             };
 
             nav.push(
-                <NavLink {...props}>
+                <NavLink {...props} onClick={this.toggleMenu}>
                     {link.label}
                 </NavLink>
             )

@@ -1,6 +1,14 @@
 import React from "react";
 
 export default class extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            wrapperPosition: 0,
+            visibleLink: -1
+        };
+    }
+
     latestJobs = [
         {
             time: 'seit 09/2017',
@@ -102,44 +110,66 @@ export default class extends React.Component {
         },
     ];
 
+    handleArrowClick = (factor) => {
+            this.setState({
+                wrapperPosition: 100 * factor,
+                visibleLink: factor === 0 ? -1 : 0
+            })
+    };
+
     render() {
+        let {wrapperPosition, visibleLink} = this.state;
+
         return (
             <div className={'pagePanel work'} id={'workPanel'}>
                 <div className={'col mood'}>
-                    <div className="bg" style={{backgroundImage: 'url(\'img/bg/work.jpg\')'}}></div>
+                    <div className="bg" style={{backgroundImage: 'url(\'img/bg/work.jpg\')'}}> </div>
                 </div>
                 <div className={'col cnt'}>
-                    <article>
-                        <h2 className="h1">Lastest Jobs</h2>
-                        <ol>
-                            {this.latestJobs.map((job, index) => (
-                                <li key={`li-${index}`}>
-                                    <em>{job.time}</em>
-                                    <h4>{job.title}</h4>
-                                    <span>{job.company}, {job.city}</span>
-                                    <ul>
-                                        {job.toDos.map((toDo, i) => (
-                                            <li key={`li-${i}`}>
-                                                {toDo}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </li>
-                            ))}
-                        </ol>
-                    </article>
-                    <article>
-                        <h3>Older Jobs</h3>
-                        <ol className={'olderJobs'}>
-                            {this.olderJobs.map((job, index) => (
-                                <li key={`li-${index}`}>
-                                    <em>{job.time}</em>
-                                    <h5>{job.title}</h5>
-                                    <span>{job.company}, {job.city}</span>
-                                </li>
-                            ))}
-                        </ol>
-                    </article>
+                    <div className="slider">
+                        <menu>
+                            <a href="javascript:" onClick={() => this.handleArrowClick(-1)} style={{opacity: visibleLink === -1 ? 1 : .2}}>
+                                <span>Latest Jobs</span>
+                            </a>
+                            <h2 className="h1">Jobs</h2>
+                            <a href="javascript:" onClick={() => this.handleArrowClick(0)} style={{opacity: visibleLink === 0 ? 1 : .2}}>
+                                <span>Older Jobs</span>
+                            </a>
+                        </menu>
+                        <div className="wrapper" style={{marginLeft: `${wrapperPosition}%`}}>
+                            <article>
+                                <h2 className="h1">Latest</h2>
+                                <ol>
+                                    {this.latestJobs.map((job, index) => (
+                                        <li key={`li-${index}`}>
+                                            <em>{job.time}</em>
+                                            <h4>{job.title}</h4>
+                                            <span>{job.company}, {job.city}</span>
+                                            <ul>
+                                                {job.toDos.map((toDo, i) => (
+                                                    <li key={`li-${i}`}>
+                                                        {toDo}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </li>
+                                    ))}
+                                </ol>
+                            </article>
+                            <article>
+                                <h3>Older</h3>
+                                <ol className={'olderJobs'}>
+                                    {this.olderJobs.map((job, index) => (
+                                        <li key={`li-${index}`}>
+                                            <em>{job.time}</em>
+                                            <h5>{job.title}</h5>
+                                            <span>{job.company}, {job.city}</span>
+                                        </li>
+                                    ))}
+                                </ol>
+                            </article>
+                        </div>
+                    </div>
                 </div>
             </div>
         )

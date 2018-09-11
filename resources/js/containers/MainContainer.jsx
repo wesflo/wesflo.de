@@ -55,10 +55,8 @@ class Component extends React.Component {
 
     checkLocation = (pathname) => {
         let key = pathname.split('/')[1];
-
-        if (key && navigation[key]) {
-            this.setActivePanel(key);
-        }
+        key = (key && navigation[key]) ? key : Object.keys(navigation)[0];
+        this.setActivePanel(key);
     };
 
     setActivePanel(key) {

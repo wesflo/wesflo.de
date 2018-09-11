@@ -64,6 +64,8 @@ $pageMaxWidth: 2000px;
 $pagePaddingY: 1rem;
 $mainAsideWidth: 260px;
 
+$panelArticleSpace: 0 2rem 0 10rem;
+
 ////Buttons
 $btnBorderRadius: 0;
 $btnBorder: none;
@@ -137,7 +139,7 @@ $panelPosTop: (
 );
 
 $panelPosLeft: (
-    'home': -20px,
+    'home': -60px,
     'skills': 25px,
     'work': -100px,
     'education': 40deg,
